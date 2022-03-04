@@ -33,9 +33,9 @@ namespace Business.Concreate
             _categoryService = categoryService;
         }
 
-        [CacheRemoveAspect("IProductService.Get")]
         //[SecuredOperation("product.add, product.admin")]
         [ValidationAspect(typeof(ProductValidator))]
+        [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
         {
             IResult result = BusinessRules.Run(
